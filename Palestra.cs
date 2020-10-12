@@ -1,15 +1,9 @@
-namespace testeeturn
-{
-   public struct Palestra
-    {
-        public string Nome;
+namespace testeeturn {
+    public struct Palestra {
+        public string Nome { get; set; }
 
-        public int Time;
-
+        public int Time { get; set; }
 
     }
-
-
-
 
 }
