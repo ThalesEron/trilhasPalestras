@@ -13,6 +13,8 @@ namespace testeeturn {
             AgendarPalestra palestra = new AgendarPalestra();
             ListarEventos evento = new ListarEventos();
 
+            //Fiz também o projeto com inserção manual dos eventos, caso queira dar uma olhada: https://github.com/ThalesEron/trilhasPalestrasManual
+
             try {
                 palestra.AgendarPalestras("Escrevendo testes rápidos", 60, trilha1);
                 palestra.AgendarPalestras("Uma visão sobre Python", 45, trilha1);
