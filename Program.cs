@@ -5,10 +5,10 @@ namespace testeeturn {
 
     class Program {
 
-       static List<Palestra> trilha1 = new List<Palestra>();
+        static List<Palestra> trilha1 = new List<Palestra>();
         static List<Palestra> trilha2 = new List<Palestra>();
-        static void AgendarPalestras (string nome, int time) {
-            
+        static void AgendarPalestras(string nome, int time) {
+
             trilha1.Add(new Palestra {
                 Nome = nome,
                     Time = time
@@ -20,12 +20,11 @@ namespace testeeturn {
             });
         }
 
-        static void Main (string[] args) {
+        static void Main(string[] args) {
 
-            DateTime data1 = new DateTime ();
-            data1 = data1.AddHours (9);
-            data1 = data1.AddMinutes (0);
-
+            DateTime data1 = new DateTime();
+            data1 = data1.AddHours(9);
+            data1 = data1.AddMinutes(0);
 
             AgendarPalestras("Escrevendo testes rápidos", 60);
             AgendarPalestras("Uma visão sobre Python", 45);
@@ -38,24 +37,22 @@ namespace testeeturn {
             AgendarPalestras("Rubi vs. Clojure para Back-End", 30);
             AgendarPalestras("UX", 30);
 
-            Console.WriteLine ("Trilha 1");
-            for (int i = 0; i < 10; i++) {
+            Console.WriteLine("Trilha 1");
 
-                string[] horario = data1.GetDateTimeFormats ('t');
-                int hourDate = data1.Hour;
-
-                if (hourDate == 12) {
-                    Console.WriteLine ("{0} Almoço", horario[0]);
-                    data1 = data1.AddMinutes (60);
-                    i--;
-                } else {
-                    Console.WriteLine ("{0} {1} {2}min", horario[0], trilha1[i].Nome, trilha1[i].Time);
-                    data1 = data1.AddMinutes (trilha1[i].Time);
+            foreach (var palestra in trilha1) {
+                string horario = data1.GetDateTimeFormats('t')[0];
+                if (data1.Hour == 12) {
+                    Console.WriteLine("{0} Almoço", horario);
+                    data1 = data1.AddMinutes(60);
+                    horario = data1.GetDateTimeFormats('t')[0];
                 }
 
-            }
-            Console.WriteLine ("17:00 Evento de Networking");
+                Console.WriteLine("{0} {1} {2}min", horario, palestra.Nome, palestra.Time);
+                data1 = data1.AddMinutes(palestra.Time);
 
+            }
+
+            Console.WriteLine("17:00 Evento de Networking");
 
             AgendarPalestras("Asp.net MVC", 60);
             AgendarPalestras("Mobilidade em desenvolvimento", 60);
@@ -67,25 +64,22 @@ namespace testeeturn {
             AgendarPalestras("Scrum para leigos", 60);
             AgendarPalestras("Rails para Desenvolvedor Python", 60);
 
-            data1 = data1.AddHours (-8);
-            Console.WriteLine ("Trilha 2");
-            for (int i = 10; i < 19; i++) {
-
-                string[] horario = data1.GetDateTimeFormats ('t');
-                int hourDate = data1.Hour;
-
-                if (hourDate == 12) {
-                    Console.WriteLine ("{0} Almoço", horario[0]);
-                    data1 = data1.AddMinutes (60);
-                    i--;
-                } else {
-                    Console.WriteLine ("{0} {1} {2}min", horario[0], trilha2[i].Nome, trilha2[i].Time);
-                    data1 = data1.AddMinutes (trilha2[i].Time);
+            data1 = data1.AddHours(-8);
+            Console.WriteLine("Trilha 2");
+             foreach (var palestra in trilha2) {
+                string horario = data1.GetDateTimeFormats('t')[0];
+                if (data1.Hour == 12) {
+                    Console.WriteLine("{0} Almoço", horario);
+                    data1 = data1.AddMinutes(60);
+                    horario = data1.GetDateTimeFormats('t')[0];
                 }
+
+                Console.WriteLine("{0} {1} {2}min", horario, palestra.Nome, palestra.Time);
+                data1 = data1.AddMinutes(palestra.Time);
 
             }
 
-            Console.WriteLine ("17:00 Evento de Networking");
+            Console.WriteLine("17:00 Evento de Networking");
 
         }
 
